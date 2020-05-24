@@ -131,3 +131,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 CART_SESSION_ID = 'cart'
+
+EMAIL_HOST = 'smtp.lidlab.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'info@lidlab.ru'
+EMAIL_HOST_PASSWORD = 'Vika14Mark19'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False

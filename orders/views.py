@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
+
 from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
@@ -19,6 +21,12 @@ def order_create(request):
 
             # Очищаем корзину
             cart.clear()
+
+            # Отправка письма на почту
+            subject = f'Новый заказ №{order.id}'
+            message = f'Дорогой {order.first_name}! Ваш заказ поступил к нам в обработку. Мы скоро Вам перезвоним!'
+            send_mail(subject, message, 'info@lidlab.ru', [order.email])
+
             return render(request, 'orders/order/created.html', {'order': order})
     else:
         form = OrderCreateForm()
